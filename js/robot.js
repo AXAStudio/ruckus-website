@@ -85,7 +85,7 @@
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.08;
-    controls.zoomSpeed = 10.0;
+    controls.zoomSpeed = 15.0;
     controls.zoomToCursor = false;
 
     // Pivot so the auto-spin always turns around the world's vertical axis.
