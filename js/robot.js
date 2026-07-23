@@ -31,7 +31,7 @@
     setLoading('Loading the robot…');
 
     let THREE, OrbitControls, STLLoader, RoomEnvironment,
-        EffectComposer, RenderPass, SSAOPass, UnrealBloomPass, OutputPass;
+        EffectComposer, RenderPass, SSAOPass, UnrealBloomPass, OutputPass, SMAAPass;
     try {
       THREE = await import('three');
       ({ OrbitControls } = await import('three/addons/controls/OrbitControls.js'));
@@ -42,6 +42,7 @@
       ({ SSAOPass } = await import('three/addons/postprocessing/SSAOPass.js'));
       ({ UnrealBloomPass } = await import('three/addons/postprocessing/UnrealBloomPass.js'));
       ({ OutputPass } = await import('three/addons/postprocessing/OutputPass.js'));
+      ({ SMAAPass } = await import('three/addons/postprocessing/SMAAPass.js'));
     } catch (err) {
       return fail('Could not load the 3D engine — check the connection.');
     }
@@ -103,7 +104,14 @@
     scene.add(pivot);
 
     // ---- post-processing composer ----
-    const composer = new EffectComposer(renderer);
+    // A multisampled HDR target: once we render through the composer the
+    // renderer's own antialias flag is bypassed, so MSAA has to live here or
+    // every edge stairsteps. HalfFloat also keeps tone mapping / bloom smooth.
+    const msaaTarget = new THREE.WebGLRenderTarget(1, 1, {
+      type: THREE.HalfFloatType,
+      samples: lowPower ? 2 : 4,
+    });
+    const composer = new EffectComposer(renderer, msaaTarget);
     composer.addPass(new RenderPass(scene, camera));
 
     // Ambient occlusion is the costly pass — desktop only.
@@ -120,6 +128,12 @@
     composer.addPass(bloom);
 
     composer.addPass(new OutputPass());
+
+    // SMAA as the final pass smooths any edges the SSAO/bloom passes reintroduce
+    // after the multisampled render (SSAO renders its beauty pass without MSAA).
+    const smaa = new SMAAPass(width(), height());
+    composer.addPass(smaa);
+
     composer.setPixelRatio(dpr);
     composer.setSize(width(), height());
 
@@ -177,6 +191,7 @@
       renderer.setSize(width(), height());
       composer.setSize(width(), height());
       if (ssao) ssao.setSize(width(), height());
+      smaa.setSize(width(), height());
     }
     window.addEventListener('resize', resize);
 
