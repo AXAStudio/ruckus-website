@@ -107,24 +107,18 @@ timeline all recompute on their own.
 Award `type` values must match a `key` in `AWARD_TYPES`. Adding a new award
 category means adding an entry there — the trophy case renders whatever it finds.
 
-## Program data
+## What this site deliberately does NOT publish
 
-Beyond the competition record, `js/data.js` carries the material that outlives
-any single game, taken from the team's 2025-26 "New Worlds" engineering
-portfolio: `IDENTITY`, `SPONSORS`, `LEGACY` (the per-season capital purchase),
-`PROCESS` (the eight-step design loop), `OUTREACH`, and `REACH`.
+The site is limited to the **public competition record** plus the team's mark
+(`IDENTITY`) and the resource links. Program-strategy material — the design
+process, outreach programs, per-season capital-equipment plans, and sponsors —
+was intentionally removed so competitors can't lift the team's playbook. Do not
+re-add `PROCESS`, `OUTREACH`, `REACH`, `LEGACY`, or `SPONSORS` data or sections
+without a deliberate decision to make them public again; note that anything in
+`js/data.js` ships to the browser and is trivially readable.
 
-Two deliberate omissions:
-
-- **The student roster is not reproduced.** The portfolio's team page is names
-  and photographs of minors. It does not belong on a public site, and adding it
-  should be a conscious decision rather than something the code did by default.
-- **`REACH` figures are one season's outreach**, not running all-time totals —
-  the page says so directly beneath them. Do not silently accumulate them.
-
-The portfolio also claims a "nine-year legacy" while FTCScout gives a rookie
-year of 2018, which is eight seasons. The site follows the eight-season figure,
-since it matches the event record. Worth resolving with the team.
+- **The student roster is not reproduced** either — it is names and photographs
+  of minors and does not belong on a public site.
 
 ## Data sources
 

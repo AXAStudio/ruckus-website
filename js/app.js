@@ -240,18 +240,6 @@ function renderSeasons() {
 
     if (s.note) card.append(el('p', 'season__note', s.note));
 
-    /* The season's lasting equipment purchase, if it made one. */
-    const legacy = LEGACY.find((l) => l.label === s.label && !l.planned);
-    if (legacy) {
-      card.append(
-        el(
-          'p',
-          'season__legacy',
-          `<strong>Legacy purchase</strong> ${legacy.item}`
-        )
-      );
-    }
-
     if (s.events.length) {
       const list = el('ul', 'events');
       s.events.forEach((e) => {
@@ -297,7 +285,7 @@ function renderSeasons() {
   });
 }
 
-/* ---------- 6. program sections ----------------------------------------- */
+/* ---------- 6. identity -------------------------------------------------- */
 
 function renderIdentity() {
   const mark = document.getElementById('identity-mark');
@@ -310,70 +298,7 @@ function renderIdentity() {
   if (coaches) coaches.textContent = IDENTITY.coaches.join(' and ');
 }
 
-function renderProcess() {
-  const host = document.getElementById('process-list');
-  if (!host) return;
-  PROCESS.forEach((p, i) => {
-    const li = el('li', 'step');
-    li.append(
-      el('span', 'step__num', String(i + 1).padStart(2, '0')),
-      el('h3', 'step__name', p.step),
-      el('p', 'step__body', p.body)
-    );
-    host.append(li);
-  });
-}
-
-function renderOutreach() {
-  const reach = document.getElementById('reach');
-  if (reach) {
-    REACH.forEach((r) => {
-      const card = el('div', 'reach__cell');
-      card.append(el('span', 'reach__value', r.value), el('span', 'reach__label', r.label));
-      reach.append(card);
-    });
-  }
-
-  const host = document.getElementById('outreach-list');
-  if (!host) return;
-  OUTREACH.forEach((o) => {
-    const card = el('article', 'program');
-    card.append(
-      el('span', 'program__tag', o.tag),
-      el('h3', 'program__title', o.title),
-      el('p', 'program__body', o.body)
-    );
-    host.append(card);
-  });
-}
-
-function renderLegacy() {
-  const host = document.getElementById('legacy-list');
-  if (!host) return;
-  LEGACY.forEach((l) => {
-    const li = el('li', 'legacy__row' + (l.planned ? ' legacy__row--planned' : ''));
-    li.append(
-      el('span', 'legacy__season', l.label),
-      el('span', 'legacy__game', l.game),
-      el('span', 'legacy__item', l.item)
-    );
-    if (l.planned) li.append(el('span', 'legacy__flag', 'Planned'));
-    host.append(li);
-  });
-}
-
-function renderSponsors() {
-  const host = document.getElementById('sponsors-list');
-  if (!host) return;
-  SPONSORS.forEach((sp) => {
-    const li = el('li', 'sponsor');
-    li.append(el('span', 'sponsor__name', sp.name));
-    if (sp.note) li.append(el('span', 'sponsor__note', sp.note));
-    host.append(li);
-  });
-}
-
-/* ---------- 6. odds and ends -------------------------------------------- */
+/* ---------- 7. odds and ends -------------------------------------------- */
 
 function renderInlineFigures() {
   const map = {
@@ -435,10 +360,6 @@ renderTrophies();
 renderChart();
 renderHighlights();
 renderSeasons();
-renderProcess();
-renderOutreach();
-renderLegacy();
-renderSponsors();
 renderInlineFigures();
 renderSources();
 initTheme();
