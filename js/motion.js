@@ -39,10 +39,18 @@
      of cards resolves left-to-right instead of all at once. */
 
   const groups = [
+    ['.identity > *', 'reveal'],
     ['#trophies > *', 'reveal'],
     ['#highlights > *', 'reveal'],
     ['#record .highlight', 'reveal'],
+    ['#process > *', 'reveal'],
+    ['#outreach-list > *', 'reveal'],
+    ['#sponsors-list > *', 'reveal'],
     ['.chart-card', 'reveal'],
+    /* Bordered tables reveal whole — staggering their rows would animate the
+       shared borders apart. */
+    ['.reach', 'reveal'],
+    ['.legacy', 'reveal'],
     ['.footer__grid > *', 'reveal'],
   ];
 

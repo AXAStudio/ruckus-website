@@ -21,7 +21,7 @@ Opening `index.html` directly from the filesystem also works.
 ```
 index.html        page structure and copy
 css/styles.css    theme tokens, neobrutalist primitives, all layout
-js/data.js        the team record — the only file you edit to update results
+js/data.js        the team record + program data — the file you edit to update
 js/app.js         renders the trophy case, chart, highlights, and timeline
 js/motion.js      entrance, scroll reveals, count-ups, parallax
 ```
@@ -68,11 +68,31 @@ timeline all recompute on their own.
 Award `type` values must match a `key` in `AWARD_TYPES`. Adding a new award
 category means adding an entry there — the trophy case renders whatever it finds.
 
+## Program data
+
+Beyond the competition record, `js/data.js` carries the material that outlives
+any single game, taken from the team's 2025-26 "New Worlds" engineering
+portfolio: `IDENTITY`, `SPONSORS`, `LEGACY` (the per-season capital purchase),
+`PROCESS` (the eight-step design loop), `OUTREACH`, and `REACH`.
+
+Two deliberate omissions:
+
+- **The student roster is not reproduced.** The portfolio's team page is names
+  and photographs of minors. It does not belong on a public site, and adding it
+  should be a conscious decision rather than something the code did by default.
+- **`REACH` figures are one season's outreach**, not running all-time totals —
+  the page says so directly beneath them. Do not silently accumulate them.
+
+The portfolio also claims a "nine-year legacy" while FTCScout gives a rookie
+year of 2018, which is eight seasons. The site follows the eight-season figure,
+since it matches the event record. Worth resolving with the team.
+
 ## Data sources
 
-Figures were pulled from the FTCScout public API and cross-checked against the
-official FIRST event pages. Records reflect results through the end of the
-2025-26 DECODE season.
+Competition figures were pulled from the FTCScout public API and cross-checked
+against the official FIRST event pages, and are corroborated by the awards
+timeline in the team's own portfolio. Records reflect results through the end
+of the 2025-26 DECODE season.
 
 - <https://ftcscout.org/teams/14712>
 - <https://ftc-events.firstinspires.org/team/14712>

@@ -4,14 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FTC 14712 — Ruckus Robotics</title>
-<meta name="description" content="The competition record of FIRST Tech Challenge team 14712, Ruckus Robotics of Avenues New York: 31 awards, 11 Inspire Awards, 4 tournament titles, and three straight trips to the World Championship.">
+<meta name="description" content="FIRST Tech Challenge team 14712, Ruckus Robotics of Avenues New York: 31 awards, 11 Inspire Awards, three straight World Championships, and the student-led outreach program behind them.">
 <meta name="theme-color" content="#5FA73D">
 
 <meta property="og:title" content="FTC 14712 — Ruckus Robotics">
 <meta property="og:description" content="31 awards. 11 Inspire Awards. Three straight World Championships. The record of FTC team 14712 out of New York City.">
 <meta property="og:type" content="website">
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%235FA73D'/><text y='75' x='50' text-anchor='middle' font-size='62' font-family='Arial Black,sans-serif' fill='%2312130F'>R</text></svg>">
+<!-- The turtle is the team mark. -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%235FA73D'/><text y='78' x='50' text-anchor='middle' font-size='68'>🐢</text></svg>">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,10 +31,10 @@
       <span>Ruckus Robotics</span>
     </a>
     <div class="nav__links">
+      <a href="#the-team">The team</a>
       <a href="#trophy-case">Trophy case</a>
+      <a href="#outreach">Outreach</a>
       <a href="#by-season">By season</a>
-      <a href="#moments">Defining moments</a>
-      <a href="#record">Full record</a>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">☾</button>
     </div>
   </div>
@@ -85,7 +86,7 @@
           <div><dt>Region</dt><dd>New York City</dd></div>
           <div><dt>School</dt><dd>Avenues New York</dd></div>
           <div><dt>Rookie year</dt><dd>2018</dd></div>
-          <div><dt>Status</dt><dd><span class="live">Active 2025-26</span></dd></div>
+          <div><dt>Status</dt><dd><span class="live">Active 2026-27</span></dd></div>
         </dl>
       </aside>
     </div>
@@ -116,10 +117,40 @@
     </div>
   </div>
 
-  <!-- ==================== TROPHY CASE ==================== -->
-  <section class="section wrap" id="trophy-case">
+  <!-- ==================== THE TEAM ==================== -->
+  <section class="section wrap" id="the-team">
     <div class="section__head">
-      <span class="section__num">01 — The hardware</span>
+      <span class="section__num">01 — Who they are</span>
+      <h2 class="section__title">A student-led team<br>with a turtle for a mascot</h2>
+      <p class="section__sub">
+        Ruckus Robotics is a 100% student-led, coeducational team out of Avenues: New York.
+        Everything below — the robot, the outreach, the mentoring programs, the portfolio — is
+        run by the students on it.
+      </p>
+    </div>
+
+    <div class="identity">
+      <article class="identity__mark">
+        <span class="identity__turtle" aria-hidden="true">🐢</span>
+        <h3>The turtle</h3>
+        <p id="identity-mark"></p>
+      </article>
+
+      <article class="identity__values">
+        <h3>What they say they stand for</h3>
+        <ul class="valuelist" id="values"></ul>
+        <p class="identity__coaches">
+          Coached by <span id="coaches"></span>.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ==================== TROPHY CASE ==================== -->
+  <section class="section section--alt" id="trophy-case">
+    <div class="wrap">
+    <div class="section__head">
+      <span class="section__num">02 — The hardware</span>
       <h2 class="section__title">Trophy case</h2>
       <p class="section__sub">
         Every award 14712 has been handed by a FIRST judging panel, counted across all
@@ -128,13 +159,14 @@
       </p>
     </div>
     <div class="trophies" id="trophies"></div>
+    </div>
   </section>
 
   <!-- ==================== CHART ==================== -->
-  <section class="section section--alt" id="trajectory">
+  <section class="section" id="trajectory">
     <div class="wrap">
       <div class="section__head">
-        <span class="section__num">02 — The trajectory</span>
+        <span class="section__num">03 — The trajectory</span>
         <h2 class="section__title">Eight seasons, one direction</h2>
         <p class="section__sub">
           Ruckus went from a single rookie-era qualifier to double-digit award seasons.
@@ -170,22 +202,74 @@
   </section>
 
   <!-- ==================== HIGHLIGHTS ==================== -->
-  <section class="section wrap" id="moments">
+  <section class="section section--alt" id="moments">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="section__num">04 — The peaks</span>
+        <h2 class="section__title">Defining moments</h2>
+        <p class="section__sub">
+          Four results that a standings table does not do justice to.
+        </p>
+      </div>
+      <div class="highlights" id="highlights"></div>
+    </div>
+  </section>
+
+  <!-- ==================== DESIGN PROCESS ==================== -->
+  <section class="section wrap" id="process">
     <div class="section__head">
-      <span class="section__num">03 — The peaks</span>
-      <h2 class="section__title">Defining moments</h2>
+      <span class="section__num">05 — How they build</span>
+      <h2 class="section__title">An eight-step loop</h2>
       <p class="section__sub">
-        Four results that a standings table does not do justice to.
+        Ruckus runs the same cycle on every subsystem, in sprints, so the gap between
+        iterations stays short without the work getting careless. Onshape for modelling,
+        nTop for computation, FDM printing and CNC for parts.
       </p>
     </div>
-    <div class="highlights" id="highlights"></div>
+    <ol class="process" id="process-list"></ol>
+  </section>
+
+  <!-- ==================== OUTREACH ==================== -->
+  <section class="section section--alt" id="outreach">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="section__num">06 — Beyond the field</span>
+        <h2 class="section__title">The half that isn't the robot</h2>
+        <p class="section__sub">
+          Judges hand out the Inspire Award for the whole program, not the machine — which is
+          most of why 14712 has eleven of them. These are the programs behind that.
+        </p>
+      </div>
+
+      <div class="reach" id="reach"></div>
+      <p class="reach__note">
+        Figures as reported in the team's 2025-26 engineering portfolio — one season of
+        outreach, not a running all-time total.
+      </p>
+
+      <div class="outreach" id="outreach-list"></div>
+    </div>
+  </section>
+
+  <!-- ==================== BUILT TO LAST ==================== -->
+  <section class="section wrap" id="legacy">
+    <div class="section__head">
+      <span class="section__num">07 — Built to last</span>
+      <h2 class="section__title">The legacy collection</h2>
+      <p class="section__sub">
+        Every season the team buys one piece of capital equipment meant to outlive that
+        season's robot, and budgets for it a year ahead. It is the clearest thing in their
+        portfolio: this group plans past the game currently in front of them.
+      </p>
+    </div>
+    <ol class="legacy" id="legacy-list"></ol>
   </section>
 
   <!-- ==================== SEASONS ==================== -->
   <section class="section section--alt" id="by-season">
     <div class="wrap">
       <div class="section__head">
-        <span class="section__num">04 — The record</span>
+        <span class="section__num">08 — The record</span>
         <h2 class="section__title">Season by season</h2>
         <p class="section__sub">
           Every officially recorded event, newest first, with seeding, qualification-match
@@ -200,7 +284,7 @@
   <!-- ==================== GLOSSARY ==================== -->
   <section class="section wrap" id="record">
     <div class="section__head">
-      <span class="section__num">05 — Reading the numbers</span>
+      <span class="section__num">09 — Reading the numbers</span>
       <h2 class="section__title">What the stats mean</h2>
     </div>
     <div class="highlights">
@@ -236,6 +320,21 @@
     </div>
   </section>
 
+  <!-- ==================== SPONSORS ==================== -->
+  <section class="section section--alt" id="sponsors">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="section__num">Backing them</span>
+        <h2 class="section__title">Sponsors &amp; partners</h2>
+        <p class="section__sub">
+          The team runs a roughly $4,400 season budget and plans it a year out. These are the
+          organizations named in their portfolio as making that work.
+        </p>
+      </div>
+      <ul class="sponsors" id="sponsors-list"></ul>
+    </div>
+  </section>
+
 </main>
 
 <!-- ==================== FOOTER ==================== -->
@@ -244,9 +343,11 @@
     <div>
       <h2 class="footer__title">FTC 14712 — Ruckus Robotics</h2>
       <p>
-        An unofficial showcase of team 14712's competition record. All figures are pulled
-        from public FIRST and community data sources and reflect results through the end of
-        the 2025-26 DECODE season.
+        An unofficial showcase of team 14712's competition record and program. Results are
+        pulled from public FIRST and community data sources through the end of the 2025-26
+        DECODE season. Identity, sponsors, outreach, process, and equipment come from the
+        team's own 2025-26 &ldquo;New Worlds&rdquo; engineering portfolio. The student roster
+        is deliberately not reproduced here.
       </p>
     </div>
     <div>
