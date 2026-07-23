@@ -23,7 +23,27 @@ index.html        page structure and copy
 css/styles.css    theme tokens, neobrutalist primitives, all layout
 js/data.js        the team record — the only file you edit to update results
 js/app.js         renders the trophy case, chart, highlights, and timeline
+js/motion.js      entrance, scroll reveals, count-ups, parallax
 ```
+
+## Motion
+
+The page reads as a sequence: the hero deals itself in, then each section
+arrives as you scroll — headings slide in from the side, cards stagger, the
+headline totals count up, and the chart bars grow from the baseline.
+
+All of it is optional. Every rule that hides content is scoped to a `.motion`
+class that `js/motion.js` puts on `<html>`, and it only does that when the
+visitor has not asked for reduced motion. With JavaScript off, under
+`prefers-reduced-motion: reduce`, or when printing, the page renders in its
+finished state instead.
+
+Reveals are triggered by an explicit `getBoundingClientRect` test bound
+directly to the scroll event, deliberately not by `IntersectionObserver` and
+not inside the `requestAnimationFrame` throttle. Those styles decide whether
+content is visible at all, so the trigger must not depend on frames being
+produced or on an observer actually reporting intersections. Parallax and the
+progress bar are cosmetic and stay throttled.
 
 ## Updating after a competition
 

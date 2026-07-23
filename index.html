@@ -37,29 +37,63 @@
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">☾</button>
     </div>
   </div>
+  <div class="nav__progress" aria-hidden="true"><i id="scroll-progress"></i></div>
 </nav>
 
 <main id="main">
 
   <!-- ==================== HERO ==================== -->
-  <header class="hero wrap" id="top">
-    <span class="hero__kicker">FIRST Tech Challenge · New York City</span>
-    <h1>
-      <span class="hero__number">14712</span>
-      <span class="hero__name">Ruckus <em>Robotics</em></span>
-    </h1>
-    <p class="hero__lede">
-      Eight seasons out of Avenues New York. <strong id="fig-awards">31</strong> awards across
-      <strong id="fig-events">21</strong> official events, four tournament titles, and three
-      consecutive appearances at the FIRST World Championship — earned in one of the deepest
-      regions in the program.
-    </p>
-    <div class="hero__meta">
-      <span class="chip chip--green">Rookie year 2018</span>
-      <span class="chip">Avenues New York</span>
-      <span class="chip">New York, NY · USA</span>
-      <span class="chip">Active 2025-26</span>
+  <header class="hero" id="top">
+    <!-- Slow-drifting blocks. Decorative only; killed under reduced motion. -->
+    <div class="hero__field" aria-hidden="true">
+      <span class="drift drift--a"></span>
+      <span class="drift drift--b"></span>
+      <span class="drift drift--c"></span>
+      <span class="drift drift--d"></span>
     </div>
+
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <span class="hero__kicker" data-enter="1">FIRST Tech Challenge · New York City</span>
+
+        <h1 class="hero__title">
+          <span class="hero__line" data-enter="2">Ruckus</span>
+          <span class="hero__line hero__line--fill" data-enter="3">Robotics</span>
+        </h1>
+
+        <p class="hero__lede" data-enter="4">
+          Eight seasons out of Avenues New York. <strong id="fig-awards">31</strong> awards across
+          <strong id="fig-events">21</strong> official events, four tournament titles, and three
+          consecutive appearances at the FIRST World Championship — earned in one of the deepest
+          regions in the program.
+        </p>
+
+        <div class="hero__cta" data-enter="5">
+          <a class="btn btn--go" href="#trophy-case">Open the trophy case</a>
+          <a class="btn" href="#by-season">Season by season</a>
+        </div>
+      </div>
+
+      <!-- The team number lives on a pit-sign card rather than floating loose. -->
+      <aside class="pitcard" data-enter="3" aria-label="Team identity card">
+        <div class="pitcard__head">
+          <span>Team</span>
+          <span class="pitcard__dot" aria-hidden="true"></span>
+        </div>
+        <div class="pitcard__number" id="pit-number" data-value="14712">14712</div>
+        <dl class="pitcard__meta">
+          <div><dt>Region</dt><dd>New York City</dd></div>
+          <div><dt>School</dt><dd>Avenues New York</dd></div>
+          <div><dt>Rookie year</dt><dd>2018</dd></div>
+          <div><dt>Status</dt><dd><span class="live">Active 2025-26</span></dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <a class="hero__scroll" href="#trophy-case" data-enter="6">
+      <span>Scroll</span>
+      <span class="hero__scroll-rail" aria-hidden="true"><i></i></span>
+    </a>
   </header>
 
   <!-- ==================== HEADLINE BAND ==================== -->
@@ -226,5 +260,6 @@
 
 <script src="js/data.js"></script>
 <script src="js/app.js"></script>
+<script src="js/motion.js"></script>
 </body>
 </html>
