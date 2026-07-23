@@ -18,6 +18,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+
+<!-- three.js resolved via import map so the on-demand robot viewer can use
+     bare specifiers. Nothing is fetched until the viewer is launched. -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -33,6 +44,7 @@
     <div class="nav__links">
       <a href="#the-team">The team</a>
       <a href="#trophy-case">Trophy case</a>
+      <a href="#robot">Last robot</a>
       <a href="#outreach">Outreach</a>
       <a href="#by-season">By season</a>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">☾</button>
@@ -120,12 +132,12 @@
   <!-- ==================== THE TEAM ==================== -->
   <section class="section wrap" id="the-team">
     <div class="section__head">
-      <span class="section__num">01 — Who they are</span>
+      <span class="section__num">01 — Who we are</span>
       <h2 class="section__title">A student-led team<br>with a turtle for a mascot</h2>
       <p class="section__sub">
-        Ruckus Robotics is a 100% student-led, coeducational team out of Avenues: New York.
+        We're Ruckus Robotics — a 100% student-led, coeducational team out of Avenues: New York.
         Everything below — the robot, the outreach, the mentoring programs, the portfolio — is
-        run by the students on it.
+        run by the students on the team.
       </p>
     </div>
 
@@ -137,7 +149,7 @@
       </article>
 
       <article class="identity__values">
-        <h3>What they say they stand for</h3>
+        <h3>What we stand for</h3>
         <ul class="valuelist" id="values"></ul>
         <p class="identity__coaches">
           Coached by <span id="coaches"></span>.
@@ -153,8 +165,8 @@
       <span class="section__num">02 — The hardware</span>
       <h2 class="section__title">Trophy case</h2>
       <p class="section__sub">
-        Every award 14712 has been handed by a FIRST judging panel, counted across all
-        eight seasons. Judged awards are issued in first, second, and third place; both are
+        Every award we've been handed by a FIRST judging panel, counted across all
+        eight seasons. Judged awards are issued in first, second, and third place; all are
         counted here, with first-place finishes called out on each card.
       </p>
     </div>
@@ -169,7 +181,7 @@
         <span class="section__num">03 — The trajectory</span>
         <h2 class="section__title">Eight seasons, one direction</h2>
         <p class="section__sub">
-          Ruckus went from a single rookie-era qualifier to double-digit award seasons.
+          We went from a single rookie-era qualifier to double-digit award seasons.
           Awards are counted here rather than scores, because FIRST changes the game — and
           therefore the scoring scale — every single year.
         </p>
@@ -215,13 +227,39 @@
     </div>
   </section>
 
+  <!-- ==================== LAST ROBOT (3D) ==================== -->
+  <section class="section wrap" id="robot">
+    <div class="section__head">
+      <span class="section__num">The machine</span>
+      <h2 class="section__title">Our last robot, in 3D</h2>
+      <p class="section__sub">
+        The CAD assembly of our most recent competition robot. Drag to orbit,
+        scroll to zoom, right-drag to pan.
+      </p>
+    </div>
+
+    <div class="viewer" id="viewer">
+      <div class="viewer__stage" id="viewer-stage"></div>
+      <div class="viewer__overlay" id="viewer-overlay">
+        <span class="viewer__spinner" aria-hidden="true"></span>
+        <p class="viewer__loading" id="viewer-loading">Loading the robot…</p>
+        <button class="btn btn--go" id="viewer-launch" type="button" hidden>Retry</button>
+      </div>
+      <div class="viewer__status" id="viewer-status" role="status" aria-live="polite"></div>
+      <div class="viewer__hud" id="viewer-hud" hidden>
+        <button class="viewer__btn" id="viewer-reset" type="button">Reset view</button>
+        <button class="viewer__btn" id="viewer-spin" type="button" aria-pressed="true">Pause spin</button>
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== DESIGN PROCESS ==================== -->
   <section class="section wrap" id="process">
     <div class="section__head">
-      <span class="section__num">05 — How they build</span>
+      <span class="section__num">05 — How we build</span>
       <h2 class="section__title">An eight-step loop</h2>
       <p class="section__sub">
-        Ruckus runs the same cycle on every subsystem, in sprints, so the gap between
+        We run the same cycle on every subsystem, in sprints, so the gap between
         iterations stays short without the work getting careless. Onshape for modelling,
         nTop for computation, FDM printing and CNC for parts.
       </p>
@@ -237,13 +275,13 @@
         <h2 class="section__title">The half that isn't the robot</h2>
         <p class="section__sub">
           Judges hand out the Inspire Award for the whole program, not the machine — which is
-          most of why 14712 has eleven of them. These are the programs behind that.
+          most of why we have eleven of them. These are the programs behind that.
         </p>
       </div>
 
       <div class="reach" id="reach"></div>
       <p class="reach__note">
-        Figures as reported in the team's 2025-26 engineering portfolio — one season of
+        Figures as reported in our 2025-26 engineering portfolio — one season of
         outreach, not a running all-time total.
       </p>
 
@@ -257,9 +295,9 @@
       <span class="section__num">07 — Built to last</span>
       <h2 class="section__title">The legacy collection</h2>
       <p class="section__sub">
-        Every season the team buys one piece of capital equipment meant to outlive that
-        season's robot, and budgets for it a year ahead. It is the clearest thing in their
-        portfolio: this group plans past the game currently in front of them.
+        Every season we buy one piece of capital equipment meant to outlive that
+        season's robot, and budget for it a year ahead. It's the clearest thing in our
+        portfolio: we plan past the game currently in front of us.
       </p>
     </div>
     <ol class="legacy" id="legacy-list"></ol>
@@ -273,7 +311,7 @@
         <h2 class="section__title">Season by season</h2>
         <p class="section__sub">
           Every officially recorded event, newest first, with seeding, qualification-match
-          record, offensive power rating, and awards. Ruckus has taken the #1 seed
+          record, offensive power rating, and awards. We've taken the #1 seed
           <strong id="fig-topseed">3</strong> times.
         </p>
       </div>
@@ -327,8 +365,8 @@
         <span class="section__num">Backing them</span>
         <h2 class="section__title">Sponsors &amp; partners</h2>
         <p class="section__sub">
-          The team runs a roughly $4,400 season budget and plans it a year out. These are the
-          organizations named in their portfolio as making that work.
+          We run a roughly $4,400 season budget and plan it a year out. These are the
+          organizations named in our portfolio that make that work.
         </p>
       </div>
       <ul class="sponsors" id="sponsors-list"></ul>
@@ -343,11 +381,11 @@
     <div>
       <h2 class="footer__title">FTC 14712 — Ruckus Robotics</h2>
       <p>
-        An unofficial showcase of team 14712's competition record and program. Results are
+        Our own showcase of team 14712's competition record and program. Results are
         pulled from public FIRST and community data sources through the end of the 2025-26
-        DECODE season. Identity, sponsors, outreach, process, and equipment come from the
-        team's own 2025-26 &ldquo;New Worlds&rdquo; engineering portfolio. The student roster
-        is deliberately not reproduced here.
+        DECODE season. Identity, sponsors, outreach, process, and equipment come from our
+        2025-26 &ldquo;New Worlds&rdquo; engineering portfolio. We deliberately don't
+        reproduce the student roster here. Not affiliated with or endorsed by FIRST.
       </p>
     </div>
     <div>
@@ -362,5 +400,6 @@
 <script src="js/data.js"></script>
 <script src="js/app.js"></script>
 <script src="js/motion.js"></script>
+<script src="js/robot.js"></script>
 </body>
 </html>

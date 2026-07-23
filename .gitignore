@@ -1,0 +1,6 @@
+# Full-resolution CAD export (~391 MB) — exceeds GitHub's 100 MB per-file limit,
+# so it is never committed or deployed. The viewer uses robot/robot.stl instead,
+# a decimated web preview generated from this file.
+Full Robot.stl
+
+.DS_Store

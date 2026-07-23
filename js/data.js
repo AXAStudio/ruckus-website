@@ -421,7 +421,7 @@ const HIGHLIGHTS = [
   {
     stat: '6-0',
     title: 'Undefeated at the city championship',
-    body: 'At the 2024 NYC Championship, 14712 swept every qualification match, took the #1 seed, captained the winning alliance, and walked out with the Think Award on top of it.',
+    body: 'At the 2024 NYC Championship, we swept every qualification match, took the #1 seed, captained the winning alliance, and walked out with the Think Award on top of it.',
   },
   {
     stat: '123.0',
@@ -436,7 +436,7 @@ const HIGHLIGHTS = [
   {
     stat: '2',
     title: 'Back-to-back championship Inspire Awards',
-    body: 'The Inspire Award is the highest honor in FIRST Tech Challenge. Ruckus took it at the NYC Championship in both 2025 and 2026 — the judged equivalent of winning the city twice in a row.',
+    body: 'The Inspire Award is the highest honor in FIRST Tech Challenge. We took it at the NYC Championship in both 2025 and 2026 — the judged equivalent of winning the city twice in a row.',
   },
 ];
 
@@ -459,13 +459,13 @@ const IDENTITY = {
   traits: ['100% student-led', 'Coeducational', 'Avenues: New York', 'Eight seasons'],
   values: ['STEAM inquiry', 'Respectful collaboration', 'Mindful development', 'Communication'],
   mark:
-    'The turtle is the team mark — it runs through the branding, the logo, and the way the ' +
-    'team talks about itself. Coaches describe the job as thinking outside the turtle shell.',
+    'The turtle is our mark — it runs through the branding, the logo, and the way we ' +
+    'talk about ourselves. Our coaches describe the job as thinking outside the turtle shell.',
   coaches: ['Marlene Patricia', 'Steven Carpenter'],
 };
 
 const SPONSORS = [
-  { name: 'nTop', note: 'Computational design software. Team visited their labs; optimized parts came back 60% lighter.' },
+  { name: 'nTop', note: 'Computational design software. We visited their labs; our optimized parts came back 60% lighter.' },
   { name: 'goBILDA', note: 'Robot parts — the largest line in the build budget.' },
   { name: 'BAE Systems', note: null },
   { name: "America's Navy", note: 'Forged by the Sea.' },
@@ -500,8 +500,17 @@ const OUTREACH = [
     title: 'Hudson Guild STEM Program',
     tag: 'Ongoing mentorship',
     body:
-      'Sole mentors to two ten-person FLL teams at a community center serving underserved students, ' +
-      'visiting twice a week. The team supplies the space, the resources, and the mentors.',
+      'We are sole mentors to two ten-person FLL teams at a community center serving underserved ' +
+      'students, visiting twice a week. We supply the space, the resources, and the mentors.',
+  },
+  {
+    title: 'Sister team #32706 — rookies at Worlds',
+    tag: 'Sister team',
+    body:
+      'We took on FTC #32706 as a sister team in their rookie year, running weekly build, CAD, and ' +
+      'outreach sessions with them — design reviews, competition prep, and time in our shop. In ' +
+      'their very first season they earned a berth at the 2026 FIRST World Championship, and we ' +
+      'were glad to have helped along the way.',
   },
   {
     title: 'Signature Global Mentoring',
@@ -524,8 +533,8 @@ const OUTREACH = [
     tag: 'Close to home',
     body:
       'Weekly workshops for rookies and for sister team #24416 Hephaestech, plus a CAD course ' +
-      'contributed to the school platform. The 2026 NYC Championship finalist alliance was formed ' +
-      'with a team they had mentored.',
+      'we contributed to the school platform. Our 2026 NYC Championship finalist alliance was ' +
+      'formed with a team we had mentored.',
   },
   {
     title: 'School-wide e-waste drive',

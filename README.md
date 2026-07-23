@@ -7,7 +7,8 @@ Neobrutalist treatment built around the team color `rgb(95, 167, 61)` / `#5FA73D
 
 ## Running it
 
-No build step, no dependencies. Serve the directory over HTTP:
+No build step. The page itself has no dependencies; only the 3D robot viewer
+pulls three.js from a CDN, and only once launched. Serve the directory over HTTP:
 
 ```sh
 python3 -m http.server 8000
@@ -24,7 +25,45 @@ css/styles.css    theme tokens, neobrutalist primitives, all layout
 js/data.js        the team record + program data — the file you edit to update
 js/app.js         renders the trophy case, chart, highlights, and timeline
 js/motion.js      entrance, scroll reveals, count-ups, parallax
+js/robot.js       the on-demand 3D viewer for the latest robot
+robot/robot.stl   web-decimated preview of the robot CAD (~15 MB, 300k triangles)
+Full Robot.stl    the full-resolution CAD export (~391 MB, 7.8M triangles)
 ```
+
+The copy is written in the team's own first-person voice ("we", "our").
+
+## The robot viewer
+
+The **Last robot** section renders `robot/robot.stl` in a three.js WebGL viewer.
+It loads automatically, but only after the page's own content has painted —
+three.js and the ~15 MB mesh are imported on `load` (via `requestIdleCallback`)
+so the initial render stays fast and dependency-free. three.js `0.160.0` is
+pulled from jsDelivr through the import map in `index.html`, so the viewer (only
+the viewer) needs a network connection. The mesh is shaded with a post-processing
+stack: image-based lighting from a `RoomEnvironment`, SSAO, a light bloom, and
+ACES tone mapping.
+
+`robot/robot.stl` is a grid-clustered decimation of `Full Robot.stl` down from
+7.8M to ~300k triangles — the original is far too large to load in a browser.
+Regenerate it after a new CAD export by re-running the decimation over the new
+`Full Robot.stl`.
+
+`Full Robot.stl` (~391 MB) is **git-ignored**: it exceeds GitHub's 100 MB
+per-file limit, so it is never committed or served from Pages. Keep it locally
+to regenerate the preview; distribute the raw CAD some other way if needed
+(release asset, Git LFS, external host).
+
+## Deploying (GitHub Pages)
+
+`.github/workflows/pages.yml` builds and deploys the repo root to GitHub Pages
+on every push to `master`. One-time setup: in the repo, **Settings → Pages →
+Build and deployment → Source → GitHub Actions**. After that, each push
+publishes automatically; the live URL is
+`https://axastudio.github.io/ruckus-website/`.
+
+`.nojekyll` is present so Pages serves the files as-is without Jekyll
+processing. All asset paths are relative, so the site works from the project
+subpath without changes.
 
 ## Motion
 
