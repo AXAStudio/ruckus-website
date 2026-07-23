@@ -95,7 +95,7 @@ const SEASONS = [
     season: 2018,
     label: '2018-19',
     game: 'Rover Ruckus',
-    note: 'Rookie season. The team takes its name from the game it was born into.',
+    note: '',
     events: [],
   },
   {
