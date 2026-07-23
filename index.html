@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FTC 14712 — Ruckus Robotics</title>
+<meta name="description" content="The competition record of FIRST Tech Challenge team 14712, Ruckus Robotics of Avenues New York: 31 awards, 11 Inspire Awards, 4 tournament titles, and three straight trips to the World Championship.">
+<meta name="theme-color" content="#5FA73D">
+
+<meta property="og:title" content="FTC 14712 — Ruckus Robotics">
+<meta property="og:description" content="31 awards. 11 Inspire Awards. Three straight World Championships. The record of FTC team 14712 out of New York City.">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%235FA73D'/><text y='75' x='50' text-anchor='middle' font-size='62' font-family='Arial Black,sans-serif' fill='%2312130F'>R</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ==================== NAV ==================== -->
+<nav class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__mark" href="#top">
+      <span class="nav__badge">14712</span>
+      <span>Ruckus Robotics</span>
+    </a>
+    <div class="nav__links">
+      <a href="#trophy-case">Trophy case</a>
+      <a href="#by-season">By season</a>
+      <a href="#moments">Defining moments</a>
+      <a href="#record">Full record</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">☾</button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ==================== HERO ==================== -->
+  <header class="hero wrap" id="top">
+    <span class="hero__kicker">FIRST Tech Challenge · New York City</span>
+    <h1>
+      <span class="hero__number">14712</span>
+      <span class="hero__name">Ruckus <em>Robotics</em></span>
+    </h1>
+    <p class="hero__lede">
+      Eight seasons out of Avenues New York. <strong id="fig-awards">31</strong> awards across
+      <strong id="fig-events">21</strong> official events, four tournament titles, and three
+      consecutive appearances at the FIRST World Championship — earned in one of the deepest
+      regions in the program.
+    </p>
+    <div class="hero__meta">
+      <span class="chip chip--green">Rookie year 2018</span>
+      <span class="chip">Avenues New York</span>
+      <span class="chip">New York, NY · USA</span>
+      <span class="chip">Active 2025-26</span>
+    </div>
+  </header>
+
+  <!-- ==================== HEADLINE BAND ==================== -->
+  <section class="band" aria-label="Headline totals">
+    <div class="wrap">
+      <div class="band__grid" id="band-grid"></div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>★ Inspire Award — NYC Championship 2026</span>
+      <span>★ Inspire Award — NYC Championship 2025</span>
+      <span>▲ Tournament Winner — NYC Championship 2024</span>
+      <span>◈ 6-0 undefeated · CENTERSTAGE</span>
+      <span>★ Inspire Award — NYC Championship 2026</span>
+      <span>★ Inspire Award — NYC Championship 2025</span>
+      <span>▲ Tournament Winner — NYC Championship 2024</span>
+      <span>◈ 6-0 undefeated · CENTERSTAGE</span>
+    </div>
+  </div>
+
+  <!-- ==================== TROPHY CASE ==================== -->
+  <section class="section wrap" id="trophy-case">
+    <div class="section__head">
+      <span class="section__num">01 — The hardware</span>
+      <h2 class="section__title">Trophy case</h2>
+      <p class="section__sub">
+        Every award 14712 has been handed by a FIRST judging panel, counted across all
+        eight seasons. Judged awards are issued in first, second, and third place; both are
+        counted here, with first-place finishes called out on each card.
+      </p>
+    </div>
+    <div class="trophies" id="trophies"></div>
+  </section>
+
+  <!-- ==================== CHART ==================== -->
+  <section class="section section--alt" id="trajectory">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="section__num">02 — The trajectory</span>
+        <h2 class="section__title">Eight seasons, one direction</h2>
+        <p class="section__sub">
+          Ruckus went from a single rookie-era qualifier to double-digit award seasons.
+          Awards are counted here rather than scores, because FIRST changes the game — and
+          therefore the scoring scale — every single year.
+        </p>
+      </div>
+
+      <div class="chart-card">
+        <h3 class="chart__title">Awards won per season</h3>
+        <p class="chart__note">Hover or focus a bar for the breakdown. Hatched bars are seasons with no events on record.</p>
+        <!-- The plot scrolls inside its own box so the page body never does. -->
+        <div class="chart-scroll">
+          <div class="chart-plot">
+            <div class="chart" id="chart"></div>
+            <div class="chart__axis" id="chart-axis"></div>
+          </div>
+        </div>
+
+        <details class="table-toggle">
+          <summary>View as table</summary>
+          <div class="table-scroll">
+            <table class="data-table">
+              <thead>
+                <tr><th>Season</th><th>Game</th><th>Events</th><th>Awards</th></tr>
+              </thead>
+              <tbody id="chart-table-body"></tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== HIGHLIGHTS ==================== -->
+  <section class="section wrap" id="moments">
+    <div class="section__head">
+      <span class="section__num">03 — The peaks</span>
+      <h2 class="section__title">Defining moments</h2>
+      <p class="section__sub">
+        Four results that a standings table does not do justice to.
+      </p>
+    </div>
+    <div class="highlights" id="highlights"></div>
+  </section>
+
+  <!-- ==================== SEASONS ==================== -->
+  <section class="section section--alt" id="by-season">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="section__num">04 — The record</span>
+        <h2 class="section__title">Season by season</h2>
+        <p class="section__sub">
+          Every officially recorded event, newest first, with seeding, qualification-match
+          record, offensive power rating, and awards. Ruckus has taken the #1 seed
+          <strong id="fig-topseed">3</strong> times.
+        </p>
+      </div>
+      <div class="seasons" id="seasons"></div>
+    </div>
+  </section>
+
+  <!-- ==================== GLOSSARY ==================== -->
+  <section class="section wrap" id="record">
+    <div class="section__head">
+      <span class="section__num">05 — Reading the numbers</span>
+      <h2 class="section__title">What the stats mean</h2>
+    </div>
+    <div class="highlights">
+      <article class="highlight">
+        <h3 class="highlight__title">OPR</h3>
+        <p class="highlight__body">
+          Offensive Power Rating — the points a team is estimated to contribute on its own,
+          solved out of alliance scores across an event. It is comparable within a season but
+          never between them, since each year's game scores differently.
+        </p>
+      </article>
+      <article class="highlight">
+        <h3 class="highlight__title">Rank</h3>
+        <p class="highlight__body">
+          Seeding after qualification matches. Rank 1 means the team enters the elimination
+          bracket as an alliance captain with first pick of the field.
+        </p>
+      </article>
+      <article class="highlight">
+        <h3 class="highlight__title">W-L records</h3>
+        <p class="highlight__body">
+          Qualification-match results, which is what the public record exposes per event.
+          Elimination-bracket results are reflected in the Winner and Finalist awards instead.
+        </p>
+      </article>
+      <article class="highlight">
+        <h3 class="highlight__title">The award ladder</h3>
+        <p class="highlight__body">
+          Qualifiers feed Super Qualifiers, which feed the NYC Championship, which sends its
+          Inspire winner and top alliances to the FIRST World Championship in Houston.
+        </p>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div>
+      <h2 class="footer__title">FTC 14712 — Ruckus Robotics</h2>
+      <p>
+        An unofficial showcase of team 14712's competition record. All figures are pulled
+        from public FIRST and community data sources and reflect results through the end of
+        the 2025-26 DECODE season.
+      </p>
+    </div>
+    <div>
+      <h3 class="footer__title" style="font-size:1rem;margin-bottom:0.9rem;">Sources</h3>
+      <ul class="footer__sources" id="sources"></ul>
+    </div>
+  </div>
+</footer>
+
+<div class="tooltip" id="tooltip" role="status" aria-live="polite" data-show="false"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
