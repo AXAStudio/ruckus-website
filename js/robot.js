@@ -57,13 +57,19 @@
     const themeBg = () =>
       getComputedStyle(document.documentElement).getPropertyValue('--viewer-bg').trim() || '#101410';
 
+    // On phones/tablets keep the GPU cost down: cap the pixel ratio and skip the
+    // expensive ambient-occlusion pass.
+    const coarse = window.matchMedia('(pointer: coarse)').matches;
+    const lowPower = coarse || window.innerWidth < 700;
+    const dpr = Math.min(window.devicePixelRatio, lowPower ? 1.5 : 2);
+
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(themeBg());
 
     const camera = new THREE.PerspectiveCamera(45, width() / height(), 0.1, 1e6);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(dpr);
     renderer.setSize(width(), height());
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.05;
@@ -88,6 +94,10 @@
     controls.zoomSpeed = 15.0;
     controls.zoomToCursor = false;
 
+    // On touch, let one-finger vertical drags scroll the page instead of trapping
+    // the swipe — horizontal drags still orbit and pinch still zooms.
+    if (coarse) renderer.domElement.style.touchAction = 'pan-y';
+
     // Pivot so the auto-spin always turns around the world's vertical axis.
     const pivot = new THREE.Group();
     scene.add(pivot);
@@ -96,17 +106,21 @@
     const composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
 
-    const ssao = new SSAOPass(scene, camera, width(), height());
-    ssao.kernelRadius = 6;
-    ssao.minDistance = 0.0008;
-    ssao.maxDistance = 0.06;
-    composer.addPass(ssao);
+    // Ambient occlusion is the costly pass — desktop only.
+    let ssao = null;
+    if (!lowPower) {
+      ssao = new SSAOPass(scene, camera, width(), height());
+      ssao.kernelRadius = 6;
+      ssao.minDistance = 0.0008;
+      ssao.maxDistance = 0.06;
+      composer.addPass(ssao);
+    }
 
     const bloom = new UnrealBloomPass(new THREE.Vector2(width(), height()), 0.22, 0.5, 0.85);
     composer.addPass(bloom);
 
     composer.addPass(new OutputPass());
-    composer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    composer.setPixelRatio(dpr);
     composer.setSize(width(), height());
 
     let hasModel = false;
@@ -162,7 +176,7 @@
       camera.updateProjectionMatrix();
       renderer.setSize(width(), height());
       composer.setSize(width(), height());
-      ssao.setSize(width(), height());
+      if (ssao) ssao.setSize(width(), height());
     }
     window.addEventListener('resize', resize);
 
